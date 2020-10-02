@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+    laravel:
+        build:
+          context: './docker'
+          args:
+            uid: 1000
+        container_name: laravel-holding
+        restart: unless-stopped
+        environment:
+          - APACHE_RUN_USER=#1000
+          - APACHE_RUN_GROUP=#1000
+        volumes:
+          - .:/var/www/html
+        ports:
+          - 80:80
